@@ -20,7 +20,7 @@
     (list spec (inc spec-point) new-memory memory-point)))
 
 (defn output-point [_ spec spec-point memory memory-point]
-  (do (print (char (nth memory memory-point)))
+  (do #_(print (char (nth memory memory-point)))
       (swap! output #(str % %2) (char (nth memory memory-point)))
   (list spec (inc spec-point) memory memory-point)))
 
@@ -45,7 +45,7 @@
   (let [command (get spec spec-point)
         ope (get commands command (list :none))
         [fun arg] (list (first ope) (second ope))]
-    (println " NAIYOU " command spec-point memory memory-point)
+    #_(println " NAIYOU " command spec-point memory memory-point)
     (case fun
       nil (println "output\n" @output "\nfinish")
       :none (recur (list spec (inc spec-point) memory memory-point))
